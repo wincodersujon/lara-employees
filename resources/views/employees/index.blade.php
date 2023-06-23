@@ -129,7 +129,7 @@
                         <div style="height:10px;"></div>
                         <div class="row">
                             <div class="col-md-2">
-                                <label style="position:relative; top:7px;">Departmentsss:</label>
+                                <label style="position:relative; top:7px;">Department:</label>
                             </div>
                             <div class="col-md-10">
                                 <input type="text" name="department" class="form-control" value="{{ $employee->department }}">
