@@ -10,8 +10,12 @@
         </button>
         </span>
         <div style="height:15px;"></div>
+        @if (session('status'))
+        <h6 class="alert alert-success">{{ session('status') }}</h6>
+        @endif
         <table class="table table-striped table-bordered table-hover">
             <thead>
+                <th>ID</th>
                 <th>District</th>
                 <th>Thana</th>
                 <th>Area</th>
@@ -25,6 +29,7 @@
             <tbody>
                 @foreach($employees as $employee)
                     <tr>
+                        <td>{{$employee->id}}</td>
                         <td>{{$employee->dis_name}}</td>
                         <td>{{$employee->thana_name}}</td>
                         <td>{{$employee->area_name}}</td>
@@ -34,7 +39,7 @@
                         <td>{{$employee->department}}</td>
                         <td>{{$employee->designation}}</td>
                         <td>
-                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i> Edit</button>
+                            <a href="{{ url('edit/'.$employee->id) }}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal"><i class="bi bi-pencil"></i> Edit</a>
                            <a href="{{ route('destroy', $employee->id) }}"><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash"></i> Delete</button></a>
                         </td>
                     </tr>
@@ -50,9 +55,18 @@
                   </div>
                     <div class="modal-body">
                     <div class="container-fluid">
-                    <form method="get" action="/employees">
-
-
+                    <form action="{{ url('employees/'.$employee->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label style="position:relative; top:7px;">ID:</label>
+                            </div>
+                            <div class="col-md-10">
+                                <input type="text" name="id" class="form-control" value="{{ $employee->id }}">
+                            </div>
+                        </div>
+                        <div style="height:10px;"></div>
                         <div class="row">
                             <div class="col-md-2">
                                 <label style="position:relative; top:7px;">District:</label>
@@ -256,16 +270,9 @@
             </div>
         </div>
         {{-- end add employees --}}
-        <?php
-            if(isset($_SESSION['msg'])){
-                ?>
-                    <div class="alert alert-success">
-                        <center><?php echo $_SESSION['msg']; ?></center>
-                    </div>
-                <?php
-                unset($_SESSION['msg']);
-            }
-        ?>
+        @if (session('status'))
+        <h6 class="alert alert-success">{{ session('status') }}</h6>
+        @endif
     </div>
 </div>
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
