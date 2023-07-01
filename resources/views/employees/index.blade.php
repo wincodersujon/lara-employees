@@ -76,7 +76,7 @@
                                 <select>
                                     <option value="">---Select District---</option>
                                     @foreach ($districts as $district)
-                                        <option value="{{ $district->dis_name }}">{{ $district->dis_name }}</option>
+                                        <option value="{{ $district->id }}">{{ $district->dis_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -92,7 +92,7 @@
                             <select>
                                 <option value="">---Select Thana---</option>
                                 @foreach ($thanas as $thana)
-                                    <option value="{{ $thana->thana_name }}">{{  $thana->thana_name }}</option>
+                                    <option value="{{ $thana->id }}">{{  $thana->thana_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -104,10 +104,10 @@
                         </div>
                         <div class="col-md-10">
 
-                            <select>
+                            <select name="area_id">
                                 <option value="">---Select Area---</option>
                                 @foreach ($areas as $area)
-                                    <option value="{{ $area->area_name }}">{{ $area->area_name }}</option>
+                                    <option value="{{ $area->id }}">{{ $area->area_name }}</option>
                                 @endforeach
                             </select>
                         </div>
