@@ -9,7 +9,7 @@ use App\Models\Thana;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class EmployeesController extends Controller
+class EmployeeController extends Controller
 {
     public function index()
     {
