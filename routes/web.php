@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/employees',[App\Http\Controllers\EmployeesController::class, 'index']);
-Route::get('edit/{id}',[App\Http\Controllers\EmployeesController::class, 'edit']);
-Route::put('/employees/{id}',[App\Http\Controllers\EmployeesController::class, 'update']);
-Route::post('/employees/{id}', [App\Http\Controllers\EmployeesController::class, 'destroy'])->name('destroy');
+Route::get('/employees',[App\Http\Controllers\EmployeeController::class, 'index']);
+Route::get('edit/{id}',[App\Http\Controllers\EmployeeController::class, 'edit']);
+Route::put('/employees/{id}',[App\Http\Controllers\EmployeeController::class, 'update']);
+Route::post('/employees/{id}', [App\Http\Controllers\EmployeeController::class, 'destroy'])->name('destroy');
